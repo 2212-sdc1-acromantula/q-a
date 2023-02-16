@@ -1,0 +1,36 @@
+{
+  "name": "q-a",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/2212-sdc1-acromantula/q-a.git",
+  "author": "Robin Kim <eljjang@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "mongoose": "^6.9.1",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "scripts": {
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production"
+  }
+}
