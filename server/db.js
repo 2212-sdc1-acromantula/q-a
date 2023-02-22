@@ -9,29 +9,26 @@ let questionSchema = new mongoose.Schema({
     asker_name: String,
     question_helpfulness: Number,
     reported: Boolean,
+    answers: [{
+      answer_id : Number,
+      body: String,
+      date: Date,
+      answerer_name: String,
+      reported: Boolean,
+      helpfulness: Number,
+      photos: [{
+        photo_id: Number,
+        url: String
+      }]
+    }]
   }]
 });
 
-let answerSchema = new mongoose.Schema({
-  answers: {
-    id: Number,
-    body: String,
-    date: Date,
-    answerer_name: String,
-    helpfulness: Number,
-  }
-})
+let getQuestions = (prodId) => {
+  return Questions.find( { product_id: prodId } )
+}
 
-let photoSchema = new mongoose.Schema({
-  photos: {
-      answer_id: Number,
-      url: String
-  }
-})
+const Questions = mongoose.model('question', questionSchema);
 
-const Question = new mongoose.model('question', questionSchema);
-const Answer = new mongoose.model('answer', answerSchema);
-const Photo = new mongoose.model('photo', photoSchema);
-
-module.exports = { Question, Answer, Photo };
+module.exports = { Questions, getQuestions };
 
