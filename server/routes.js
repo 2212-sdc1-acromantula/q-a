@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { getQuestions } = require('./db.js');
+const { getQuestions, getAnswers } = require('./db.js');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,8 +26,17 @@ app.get('/questions/:product_id', async (req, res) => {
   const prodId = req.params.product_id;
   try {
     const qanda = await getQuestions(prodId);
-    console.log(qanda);
     res.send(qanda);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+})
+
+app.get('/questions/:question_id/answers', async (req, res) => {
+  const questionId = req.params.question_id;
+  try {
+    const answers = await getAnswers(questionId);
+    res.send(answers[0].questions[0].answers);
   } catch (error) {
     res.status(500).send(error.message);
   }

@@ -25,10 +25,14 @@ let questionSchema = new mongoose.Schema({
 });
 
 let getQuestions = (prodId) => {
-  return Questions.find( { product_id: prodId } )
+  return Questions.find({ product_id: prodId });
+}
+
+let getAnswers = (questionId) => {
+  return Questions.find({ 'questions.question_id': questionId }, {'questions.$': 1})
 }
 
 const Questions = mongoose.model('question', questionSchema);
 
-module.exports = { Questions, getQuestions };
+module.exports = { Questions, getQuestions, getAnswers };
 
