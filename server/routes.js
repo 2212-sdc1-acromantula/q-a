@@ -35,3 +35,5 @@ app.get('/questions/:product_id', async (req, res) => {
 
 app.listen(8000);
   console.log(`Listening at http://localhost:8000`);
+
+module.exports = app;
