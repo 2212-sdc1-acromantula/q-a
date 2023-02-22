@@ -42,10 +42,9 @@ describe('Get /questions/productId/answers', () => {
     expect(res.statusCode).toBe(200);
   });
 
-  it('should respond with an array of answers', async () => {
-    const questionId = Math.floor(Math.random() * 1000000) + 1;
-    const res = await request(routes).get(`/questions/${questionId}/answers`);
-    expect(Array.isArray(res.body)).toEqual(true);
+  it('should respond with a body property in answers object', async () => {
+    const res = await request(routes).get(`/questions/12/answers`);
+    expect((res.body[0].body)).toBe("It fit fine for me");
   });
 
   it('should return 404 if question_id does not exist', async () => {
