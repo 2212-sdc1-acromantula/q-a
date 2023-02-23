@@ -58,7 +58,7 @@
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
     "dev": "webpack serve --open",
-    "server": "nodemon ./server/index.js",
+    "server": "nodemon ./server/routes.js",
     "client-dev": "npx webpack --watch",
     "test": "jest",
     "coverage": "jest --coverage"
