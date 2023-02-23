@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const csv = require('fast-csv');
-const { Questions, getQuestions } = require('./db.js');
+const { Questions, getQuestions} = require('./db.js');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,14 +18,6 @@ const answersCsv = '../answers.csv';
 const photoCsv = '../answers_photos.csv';
 
 mongoose.set('strictQuery', false);
-
-app.get('/questions', (req, res) => {
-  getQuestions(req.query.product_id, (results) => {
-    res.send(results);
-    console.log(results);
-  })
-})
-
 
 async function importQuestions() {
   let batch = [];
