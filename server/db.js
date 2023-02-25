@@ -24,6 +24,10 @@ let questionSchema = new mongoose.Schema({
   }]
 });
 
+questionSchema.index({ product_id: 1 });
+questionSchema.index({ "questions.question_id": 1 });
+questionSchema.index({ "questions.answers.answer_id": 1 });
+
 let getQuestions = (prodId) => {
   return Questions.find({ product_id: prodId });
 }
@@ -33,6 +37,8 @@ let getAnswers = (questionId) => {
 }
 
 const Questions = mongoose.model('question', questionSchema);
+
+
 
 module.exports = { Questions, getQuestions, getAnswers };
 

@@ -42,7 +42,8 @@ app.get('/questions/:question_id/answers', async (req, res) => {
   }
 })
 
-app.listen(8000);
+app.listen(8000, () => {
   console.log(`Listening at http://localhost:8000`);
+});
 
 module.exports = app;
