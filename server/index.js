@@ -21,6 +21,14 @@ db.once('open', () =>
   console.log('Connected to database, waiting for input...')
 );
 
+app.get('/', async (req, res) => {
+  try {
+    res.send('success')
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+})
+
 
 app.get('/questions/:product_id', async (req, res) => {
   const prodId = req.params.product_id;
